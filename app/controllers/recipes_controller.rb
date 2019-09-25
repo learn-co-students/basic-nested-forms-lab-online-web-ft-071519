@@ -17,11 +17,6 @@ class RecipesController < ApplicationController
     #binding.pry
     @new_recipe = Recipe.new(recipe_params)
 
-    # recipe_params["ingredients_attributes"].each do |i|
-    #   @new_ing = @new_recipe.ingredients.build(name: i["name"], quantity: i["quantity"])
-    #   @new_ing.save
-    # end
-
     if @new_recipe.save
       redirect_to recipe_path(@new_recipe)
     else
@@ -31,9 +26,13 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:title, :ingredients_attributes => [
-      "0",
-      "1"
-    ])
+    params.require(:recipe).permit(
+      :title,
+      :ingredients_attributes => [
+        :name,
+        :quantity
+      ]
+    )
   end
+
 end
