@@ -1,9 +1,9 @@
 <h2> <%= @recipe.title %></h2>
 
-<h3>Ingredients</h3>
+<h3>Ingredients</h2>
 
 <ul>
-<% @recipe.ingredients.each do |ingredient| %>
-  <li><%= "#{ingredient.name} X #{ingredient.quantity}" %></li>
+<% @recipe.ingredients.each do |ing| %>
+  <li><%= "#{ing.name} X #{ing.quantity}" %></li>
 <% end %>
 </ul>
